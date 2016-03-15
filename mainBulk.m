@@ -11,21 +11,20 @@ function mainBulk
 %tol tolerancia, quant a prop del volum complet volem estar
 %tau0 Constante para calculo de tau
 I0 = 1;
-E = 1;
+E = 1e-23;
 Beta = 0.16;
 T0 = 234;
-DT = 0.1;
+DT = 0.5;
 C = 0.1;
 D = 17;
 alpha = 0.78;
-tol = 0.05;
+tol = 0.1;
 tau0 = exp(-19.36);
 
 
+Resultat = fracbulk(I0,E,Beta,T0,DT,C,D,alpha,tol,tau0 );
 
-Resultat = fracbulk(I0,E,Beta,T0,DT,C,D,alpha,tol,tau0 )
-
-scatter(Resultat(1:length(Resultat),1),Resultat(1:length(Resultat),2));
+scatter(Resultat(1:length(Resultat),2),Resultat(1:length(Resultat),1));
 
 
 end
