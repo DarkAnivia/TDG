@@ -11,10 +11,10 @@ function mainBulk
 %tol tolerancia, quant a prop del volum complet volem estar
 %tau0 Constante para calculo de tau
 I0 = 1;
-E = 1e-23;
+E = 206950;
 Beta = 0.16;
 T0 = 234;
-DT = 0.5;
+DT = 0.01;
 C = 0.1;
 D = 17;
 alpha = 0.78;
