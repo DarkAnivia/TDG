@@ -1,4 +1,4 @@
-function frac= fracbulk(I0,E,Beta,T0,DT,C,D,alpha,tol,tau0 )
+function frac= fracbulk()
 %I0 constant
 %E Energia activació
 %Beta rati escalfament
@@ -10,37 +10,30 @@ function frac= fracbulk(I0,E,Beta,T0,DT,C,D,alpha,tol,tau0 )
 %tol tolerancia 
 %tau0 contant tau
 
-frac=zeros(1,1);
-fracext=0;
-frac(1,2)= T0;
-Limite= 1-tol;
-AuxAcumulada = 0;
-i=1;
-fprintf('T actual\t frac ext\t \t auxiliar\n');
+global tol T0 DT
 
-while frac(i,1) < Limite && i<2000
+frac = zeros(1,3);
+frac(1,2)= T0;
+
+Limite= 1-tol;
+i=1;
+
+
+
+
+while frac(i,3) < Limite 
     
     T=T0+DT*i;
-    Auxiliar = 0;
-    frac(i+1,2)=T;
-    T01=T0;
-    j=1;
-    
-    while T01<=T
-    
-        Auxiliar = Auxiliar + dfracextbulkp(I0,E,Beta,T01,DT,C,D,alpha,tau0,T);
-        j=j+1;
-        T01=T01+DT;
-        nuclis=nucleacio(I0,E,T);
-       
-    end
-    
-    AuxAcumulada(i+1) = Auxiliar;
-    fracext(i+1,1) = trapz(AuxAcumulada);
-    frac(i+1,1)= 1-exp(-fracext(i+1,1));
     frac(i+1,2) = T;
+    
+    Tp = @(x) x;
+    frac(i+1,1) = quad2d(@dfracextbulkp,T0,T,Tp,T);
+    frac (i+1,3) = 1-exp(-frac(i+1,1));
+    
+    
     i=i+1;
-    fprintf('%3.2f\t %5.2f\t %5.2f\t %5.2f\n', frac(i,2),frac(i,1),Auxiliar,nuclis);
+    
+    fprintf('%3.2f\t %5.2f\t %5.2f\n', frac(i,2),frac(i,1),frac(i,3));
     
 end
 
