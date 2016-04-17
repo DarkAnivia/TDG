@@ -20,22 +20,23 @@ close all;
 %con beta 1500 I0 = 10^22.7
 %con beta 23000 I0 = 10^23.8
 
-global I0 E Beta T0 DT C D alpha tol tau0;
+global I0 E Beta T0 DT C D alpha tol tau0 Ti;
 
 
-savefile_para='Test_Bulk.txt';
-%%savefile_para='Bulk_T0234_I010-23.1_B90.txt';  
+%%savefile_para='Test_Bulk.txt';
+savefile_para='Bulk_I010-21.7_B23000.txt';  
 
 T0 = 234;
 C = 0.1;
 tau0 = 10^(-19.36);
 D = 17;
 alpha = 0.78;
-Beta = 1500;
-DT = 0.5;
-I0 = 10^22.7;
+Beta = 23000;
+DT = 0.1;
+I0 = 10^21.7;
 E = 206950;
 tol = 0.001;
+Ti= 300;
 
 
 fi=fopen(savefile_para, 'w');

@@ -24,7 +24,7 @@ tau0 = 10^(-19.36);
 D = 17;
 alpha = 0.78;
 Beta = 0.16;
-DT = 0.5;
+DT = 0.1;
 d0 = 200;
 Ti = 300;
 
@@ -61,6 +61,6 @@ end
 i=i-20;
 
 %scatter(Resultat(1:length(Resultat),1),Resultat(1:length(Resultat),2));
-scatter(Resultat(i:length(Resultat),1),Resultat(i:length(Resultat),3));
+scatter(Resultat(i:length(Resultat),1),Resultat(i:length(Resultat),4));
 
 end
