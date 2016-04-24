@@ -15,7 +15,7 @@ clear all
 
 global T0 A C tau0 D alpha Beta DT d0 Ti;
 
-savefile_para='Només_front.txt';
+savefile_para='Front_d0200.txt';
 
 T0 = 234;
 A = 1;
@@ -29,7 +29,7 @@ d0 = 200;
 Ti = 300;
 
 fi=fopen(savefile_para, 'w');
-fprintf(fi, 'T0: %4.1f temperatura vidre (kelvin)|n', T0);
+fprintf(fi, 'T0: %4.1f temperatura vidre (kelvin)\n', T0);
 fprintf(fi, 'Ti: %4.1f\t temperatura incial proces (Kelvin)\n', Ti);
 fprintf(fi, 'A: %5.0f\t area de la muestra (nm^2)\n', A);
 fprintf(fi, 'C: %5.2f\t constante de velocidad del frente\n', C);
@@ -40,7 +40,7 @@ fprintf(fi, 'Beta: %5.2f\t ratio de calentamiento (K/s)\n', Beta);
 fprintf(fi, 'DT: %4.1f\t incremento de temperatura en cada paso de integrla (K)\n', DT);
 fprintf(fi, 'd0: %5.2f\t grueso de la muestra (nm)\n', d0);
 fprintf(fi, '\n\n\n\n');
-fprintf(fi, 'Dist Front\t T \t Dx/DT\n');
+fprintf(fi, 'T\t Dist Front \t Dx/DT\n');
 fclose(fi);
 
 
@@ -49,7 +49,7 @@ Resultat = Vfrontp();
 fi = fopen(savefile_para, 'a');
 
 for i=1:length(Resultat)
-    fprintf(fi, '%f\t %f\t %f\n', Resultat(i,1),Resultat(i,2),Resultat(i,3));
+    fprintf(fi, '%f\t %f\t %f\t %f\n', Resultat(i,1),Resultat(i,2),Resultat(i,3), Resultat(i,4));
 end
 fclose(fi);
 

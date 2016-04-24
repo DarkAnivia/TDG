@@ -45,6 +45,8 @@ while (VolumMostra>Vtransaux)
 end
 
 Vtrans(i,2)=VolumMostra;
+Vtrans(i,3) = 1;
+Vtrans(i,4)= (Vtrans(i,3)-Vtrans(i-1,3))/DT;
 
 end
 
