@@ -3,11 +3,11 @@ function VolumTransformat = VolumTransformat()
 %   Detailed explanation goes here
 
 
-global A d0 Ti T0 DT
+global A d0 Ti T0 DT tol entalpia
 
 
 VolumMostra= A*d0;
-VolumTransformat = zeros(1,4);
+VolumTransformat = zeros(1,5);
 VolumTransformat(1,1) = Ti;
 
 %pte igualar lo que llega de ambos sitios
@@ -21,7 +21,7 @@ while VolumTransformat(index,2)< VolumMostra
     T = Ti + DT*index;
     
     Tp = @(x) x;
-    fracTransExt = quad2d(@dfracextbulkp,T0,T,Tp,T);
+    fracTransExt = quad2d(@dfracextbulkp,T0,T,Tp,T,'AbsTol',tol);
     fracTrans = 1-exp(-fracTransExt);
     VolTransBulkp = VolumMostra * fracTrans;
     
@@ -38,7 +38,10 @@ while VolumTransformat(index,2)< VolumMostra
     VolumTransformat(index+1,3) = VolumTransformat(index+1,2)/VolumMostra;
     if (index>1)
         VolumTransformat(index+1,4)= VolumTransformat(index+1,3)-VolumTransformat(index,3);
+        VolumTransformat(index+1,5) = Cpg(T)*(1-VolumTransformat(index+1,3))+Cpl(T)*VolumTransformat(index+1,3)+entalpia *VolumTransformat(index+1,4)/DT;
+    
     end
+    
     
     index = index + 1;
     

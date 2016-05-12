@@ -27,7 +27,7 @@ while frac(i,3) < Limite
     frac(i+1,1) = T;
     
     Tp = @(x) x;
-    frac(i+1,2) = quad2d(@dfracextbulkp,T0,T,Tp,T, 'AbsTol',1e-4);
+    frac(i+1,2) = quad2d(@dfracextbulkp,T0,T,Tp,T, 'AbsTol',tol);
     frac (i+1,3) = 1-exp(-frac(i+1,2));
     
     frac(i+1,4)=(frac(i+1,3)-frac(i,3))/DT;
