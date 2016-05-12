@@ -1,4 +1,4 @@
-function mainBulk
+function main
 %autoejecución para sólo Vbulk
 
 %I0 contant nucleació
@@ -12,18 +12,19 @@ function mainBulk
 %tol tolerancia, quant a prop del volum complet volem estar
 %tau0 Constante para calculo de tau
 %r0 Radi inicial (nm)
-
+%A area mostra
+%d0 gruix mostra
 
 clear all;
 close all;
 
 
 
-global I0 E Beta T0 DT C D alpha tol tau0 Ti r0;
+global I0 E Beta T0 DT C D alpha tol tau0 Ti r0 d0 A;
 
-fitxerBeta='Beta25000.txt';
-savefile_para='B25000Bulk.txt';
-%%savefile_para='Test_Bulk.txt';  
+fitxerBeta='Beta.txt';
+savefile_para='Test_Main.txt';
+%%savefile_para='Bulk_I010-21.7_B23000.txt';  
 
 T0 = 234;
 C = 0.1;
@@ -36,7 +37,9 @@ I0 = 10^21.7;
 E = 206950;
 tol = 0.001;
 Ti= 300;
-r0 = 10;
+r0 = 0;
+d0=4200;
+A=1E12;
 
 
 fi=fopen(savefile_para, 'w');
@@ -53,12 +56,12 @@ fprintf(fi, 'E: %5.2f\t Energia de activació (Jouls/mol)\n',E);
 fprintf(fi, 'tol: %5.5f tolerància \n', tol);
 fprintf(fi, 'r0: %f Radi Inicial \n', r0);
 fprintf(fi, '\n\n\n\n');
-fprintf(fi, ' T \t frac ext\t frac \t Dx/DT\n');
+fprintf(fi, ' T \t Volum \t fracció \t Dx/DT\n');
 fclose(fi);
+%% pte poenr todo ben
 
 
-
-Resultat = fracbulk();
+Resultat = VolumTransformat();
 
 fi = fopen(savefile_para, 'a');
 
@@ -67,14 +70,10 @@ for i=1:length(Resultat)
 end
 fclose(fi);
 
-i=1;
-while ( Resultat(i,2)< 0.01 )
-    i=i+1;
-end
-i=i-20;
 
-%scatter(Resultat(i:length(Resultat),1),Resultat(i:length(Resultat),3));
-scatter(Resultat(i:length(Resultat),1),Resultat(i:length(Resultat),4));
+
+scatter(Resultat(1:length(Resultat),1),Resultat(1:length(Resultat),4));
+%scatter(Resultat(1:length(Resultat),1),Resultat(1:length(Resultat),2));
 
 
 

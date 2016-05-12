@@ -10,13 +10,13 @@ function dfracext= dfracextbulkp(T,Tp)
 %tau0 cte para tau
 %T final del proces
 
-global Beta
+global  r0
 
 
 %quant ha crescut cada bola desde instant que comencen a creixer fins
 %actualitat
 
-dfracext = 4/3*pi*nucleacio(T)./Beta.*Ddistfrontp(Tp).^3;
+dfracext = 4/3*pi*nucleacio(T)./Beta(T).*(r0+Ddistfrontp(Tp).*1).^3;
 
     
     

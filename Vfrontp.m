@@ -13,7 +13,7 @@ function Vtrans = Vfrontp ()
 %Vtrans: Temperatura (col1) i Volum transformat a cada pas de les
 %iteracions i per tant a cada temperatura (col 2)
 
-global Ti A DT d0 T0;
+global Ti A DT d0 T0 m0;
 
 % i: auxiliar per pasos. Degut a l'aprofitament de la variable pel bucle i
 % l'indicador del vector, caldrà començar a 1 i no a 0 per a poder
@@ -25,7 +25,7 @@ i=0;
 %%Fi inicialització%%
 
 %%Inicialitzem variable destí final%%
-Vtrans = zeros(1,4);
+Vtrans = zeros(1,5);
 VolumMostra = d0*A;
 Vtransaux = 0;
 %%Inici cálcul%%
@@ -37,8 +37,12 @@ while (VolumMostra>Vtransaux)
     Vtrans(i+1,3) = Vtrans(i+1,2)/d0;
     if (i>1)
     Vtrans (i+1,4) = (Vtrans(i+1,3) - Vtrans(i,3))/DT;
+    Vtrans(i+1,5) = Cpg(T)*(1-Vtrans(i+1,3))+Cpl(T)*Vtrans(i+1,3)+Vtrans(i+1,4);
     end
     Vtransaux= A*Vtrans(i+1,2);
+    
+    
+    
     i=i+1;
     
     fprintf('%f\t %f\t  %f\t %f\n', Vtrans(i,1),Vtrans(i,2),Vtrans(i,3),Vtrans(i,4));

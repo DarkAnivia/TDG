@@ -5,7 +5,6 @@ function y = Ddistfrontp (T)
 %T: Tfinal escalfament
 %Beta ritme escalfament
 
-global Beta
-
-y = velfront(T)./Beta;
+y = velfront(T)./Beta(T).*1;
+%es multiplica per 1 simplement per culpa de la "escalarització"
 end
