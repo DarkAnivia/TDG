@@ -24,9 +24,10 @@ close all;
 
 global I0 E Beta T0 DT C D alpha tol tau0 Ti r0 d0 A densitat entalpia;
 
-fitxerBeta='Beta 01667.txt';
-savefile_para='Test_Main.txt';
-%%savefile_para='Bulk_I010-21.7_B23000.txt';  
+%fitxerBeta='Beta100.txt';
+fitxerBeta='Beta 0167.txt';
+%savefile_para='Test_Main.txt';
+savefile_para='Trans_d4200_B01667fix.txt';  
 
 T0 = 234;
 C = 0.1;
@@ -35,10 +36,11 @@ D = 17;
 alpha = 0.78;
 Beta = load(fitxerBeta);
 DT = 0.1;
-I0 = 10^21.7;
+%I0 = 10^21.7;    %primera I0 calculada en base a 1a aprox
+I0 = 10^21.15;
 E = 206950;
-tol = 1E-5;
-Ti= 300;
+tol = 1E-4;
+Ti= 320;
 r0 = 0;
 d0=4200;
 A=1E12;
@@ -61,9 +63,10 @@ fi=fopen(savefile_para, 'w');
 %fprintf(fi, 'tol: %5.5f tolerància \n', tol);
 %fprintf(fi, 'r0: %f Radi Inicial \n', r0);
 %fprintf(fi, '\n\n\n\n');
-fprintf(fi, ' T \t Volum \t fracció \t Dx/DT\t CpSpecific\n');
+fprintf(fi, ' T \t Volum \t fracció \t Dx/DT\t CpSpecific\t Beta\n');
 fclose(fi);
 %% pte poenr todo ben
+
 
 
 Resultat = VolumTransformat();
@@ -71,7 +74,7 @@ Resultat = VolumTransformat();
 fi = fopen(savefile_para, 'a');
 
 for i=1:length(Resultat)
-    fprintf(fi, '%f\t %f\t %f\t %f\n', Resultat(i,1),Resultat(i,2),Resultat(i,3),Resultat(i,4),Resultat(i,5));
+    fprintf(fi, '%f\t %f\t %f\t %f\t %f\t %f\n', Resultat(i,1),Resultat(i,2),Resultat(i,3),Resultat(i,4),Resultat(i,5),Resultat(i,6));
 end
 fclose(fi);
 

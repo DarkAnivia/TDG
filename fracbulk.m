@@ -12,8 +12,9 @@ function frac= fracbulk()
 
 global tol Ti DT T0
 
-frac = zeros(1,4);
+frac = zeros(1,5);
 frac(1,1)= Ti;
+frac(1,5) = Beta(Ti);
 
 Limite= 1-tol;
 i=1;
@@ -31,11 +32,10 @@ while frac(i,3) < Limite
     frac (i+1,3) = 1-exp(-frac(i+1,2));
     
     frac(i+1,4)=(frac(i+1,3)-frac(i,3))/DT;
+    frac(i+1,5) = Beta(T);
     
     
     i=i+1;
-    
-    fprintf('%f\t %f\t %f\n', frac(i,1),frac(i,2),frac(i,3));
     
 end
 
