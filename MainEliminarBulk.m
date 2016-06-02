@@ -34,14 +34,22 @@ r0 = 0;
 %I0 = 10^24;  %Valores sólo bulk aprox
 %E = 220000;
 
+I0 = 10^32.0;   
+E = 275000;
 
-I0 = 10^24;  
-E = 220000;
+I0 = 10^28.5;   
+E = 250000;
+
+I0 = 10^32;   
+E = 275000;
+
+
+
 
 
 %aumentar E los separa y desplaza hacia la derecha
 %Disminuir I0 desplaza todo a la derecha
-savefile_para='Test_Ajust I0_10E24  E_220000.txt'; 
+savefile_para='Test_Ajust I0_10E32  E_275000.txt'; 
 fi=fopen(savefile_para, 'w');
 fprintf(fi, ' T \t B0.33\t B0.167 \t B100\t B1500 \t B23000\n');
 fclose(fi);
@@ -77,7 +85,7 @@ end
 fprintf('Fin 0167\n');
 
 %%CALCULO PARA 100%%
-fitxerBeta='Beta100.txt';
+fitxerBeta='Beta01k.txt';
 Beta = load(fitxerBeta);
 
 Resultat100 = fracbulk();
@@ -88,7 +96,7 @@ end
 fprintf('Fin 100\n');
 %%CALCULO PARA 1500%%
 
-fitxerBeta='Beta1500.txt';
+fitxerBeta='Beta15k.txt';
 Beta = load(fitxerBeta);
 
 Resultat1500 = fracbulk();
@@ -99,7 +107,7 @@ end
 fprintf('Fin 1500\n');
 
 %%CALCULO PARA 25000%%
-fitxerBeta='Beta25000.txt';
+fitxerBeta='Beta25k.txt';
 Beta = load(fitxerBeta);
 
 Resultat25000 = fracbulk();

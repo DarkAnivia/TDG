@@ -23,7 +23,7 @@ close all;
 global I0 E Beta T0 DT C D alpha tol tau0 Ti r0;
 
 %fitxerBeta='Beta100.txt';
-fitxerBeta='Beta15k.txt';
+fitxerBeta='Beta 0167.txt';
 %fitxerBeta='BetaSmooth100.txt';
 %savefile_para='B01667Bulk.txt';
 savefile_para='Test_Bulk.txt';  
@@ -41,7 +41,8 @@ E = 206950;
 tol = 1E-3;
 Ti= 320;
 r0 = 0;
-
+I0 = 10^11.0;   
+E = 140000;
 
 fi=fopen(savefile_para, 'w');
 %fprintf(fi, 'Ti: %4.1f\t temperatura incial proces (Kelvin)\n', T0);
