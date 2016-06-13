@@ -8,11 +8,11 @@ function y = DispersioDistFrontp (T)
 global d0 T0 DP;
 
 y=0; 
-Tf=250;
+Tf=200;
 
-for index = 1:10000
+while Tf<450
     
-    Tf = Tf + DP;
+    
     auxVel = quad(@dispersiovelfront,T0,T);
     dist = auxVel * C(Tf)/Beta(T);
 
@@ -20,6 +20,7 @@ for index = 1:10000
         dist = d0;
     end
     y = y + P(Tf)*dist;
+    Tf = Tf + DP;
    
 end
 

@@ -19,7 +19,7 @@ clear all
 
 global T0 A C tau0 D alpha Beta DT d0 Ti m0 promig sigma tol DP;
 
-DP=0.01;
+DP=0.05;
 
 fitxerBeta='Beta 0167.txt';
 

@@ -3,6 +3,7 @@ function P = P( Tf )
 %   Detailed explanation goes here
 global sigma promig ;
 
+%Al hacer pruebas recordar definir la global promig
 
  T0 = 230.54; %K
  Taug = 2.69e-12;
@@ -20,7 +21,7 @@ global sigma promig ;
  
  tau = Taug * exp((Tf*A + B)*T0/(345-T0));
   
- z = (tau - tau0 )/35; 
+ z = (tau - tau0 )/33; 
  %/w;
 
 
