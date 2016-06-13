@@ -6,5 +6,6 @@ function y = Ddistfrontp (T)
 %Beta ritme escalfament
 
 y = velfront(T)./Beta(T).*1;
+
 %es multiplica per 1 simplement per culpa de la "escalarització"
 end
