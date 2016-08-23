@@ -50,6 +50,23 @@ while VolumTransformat(index,2)< VolumMostra
     
 end;
 
+pasosExtra = 0;
+
+while (pasosExtra<20)
+    T=Ti+index*DT;
+    VolumTransformat(index,2)= d0;
+    VolumTransformat(index,1)= T;
+    VolumTransformat(index,3) = 1;
+
+    VolumTransformat(index,4) = (VolumTransformat(index,3) - VolumTransformat(index-1,3))/DT;
+    VolumTransformat(index,5) = Cpg(T)*(1-VolumTransformat(index,3))+Cpl(T)*VolumTransformat(index,3)+entalpia *VolumTransformat(index,4);
+
+    
+    fprintf('%f\t %f\t  %f\t  %f\t %f\n', VolumTransformat(index,1),VolumTransformat(index,2),VolumTransformat(index,3),VolumTransformat(index,4),VolumTransformat(index,5));
+    index=index+1;
+    pasosExtra = pasosExtra +1;
+end
+
 
 
 

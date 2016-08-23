@@ -14,11 +14,12 @@ function mainFront
 
 clear all
 
-global T0 A C tau0 D alpha Beta DT d0 Ti m0;
+global T0 A C tau0 D alpha Beta DT d0 Ti m0 entalpia;
 
-fitxerBeta='Beta200nmpaper.txt';
+fitxerBeta='Beta 0167.txt';
 
-savefile_para='Front_d0200.txt';
+%savefile_para='Front_d4200.txt';
+savefile_para='Test_Front.txt';
 
 T0 = 234;
 A = 1;
@@ -28,22 +29,23 @@ D = 17;
 alpha = 0.78;
 Beta = load(fitxerBeta);
 DT = 0.1;
-d0 = 200;
+d0 = 4200;
 Ti = 300;
 m0 = 0;
+entalpia = 34.5;
 
 fi=fopen(savefile_para, 'w');
-fprintf(fi, 'T0: %4.1f temperatura vidre (kelvin)\n', T0);
-fprintf(fi, 'Ti: %4.1f\t temperatura incial proces (Kelvin)\n', Ti);
-fprintf(fi, 'A: %5.0f\t area de la muestra (nm^2)\n', A);
-fprintf(fi, 'C: %5.2f\t constante de velocidad del frente\n', C);
-fprintf(fi, 'tau0: %5.2f\t Constante para calculo de tau\n', tau0);
-fprintf(fi, 'D: %5.2f\t constante para calculo de tau\n', D);
-fprintf(fi, 'alpha: %5.2f\t coeficiente para calculo velocidad frente \n', alpha);
-%%fprintf(fi, 'Beta: %5.2f\t ratio de calentamiento (K/s)\n', Beta);
-fprintf(fi, 'DT: %4.1f\t incremento de temperatura en cada paso de integrla (K)\n', DT);
-fprintf(fi, 'd0: %5.2f\t grueso de la muestra (nm)\n', d0);
-fprintf(fi, '\n\n\n\n');
+% fprintf(fi, 'T0: %4.1f temperatura vidre (kelvin)\n', T0);
+% fprintf(fi, 'Ti: %4.1f\t temperatura incial proces (Kelvin)\n', Ti);
+% fprintf(fi, 'A: %5.0f\t area de la muestra (nm^2)\n', A);
+% fprintf(fi, 'C: %5.2f\t constante de velocidad del frente\n', C);
+% fprintf(fi, 'tau0: %5.2f\t Constante para calculo de tau\n', tau0);
+% fprintf(fi, 'D: %5.2f\t constante para calculo de tau\n', D);
+% fprintf(fi, 'alpha: %5.2f\t coeficiente para calculo velocidad frente \n', alpha);
+% fprintf(fi, 'Beta: %5.2f\t ratio de calentamiento (K/s)\n', Beta);
+% fprintf(fi, 'DT: %4.1f\t incremento de temperatura en cada paso de integrla (K)\n', DT);
+% fprintf(fi, 'd0: %5.2f\t grueso de la muestra (nm)\n', d0);
+% fprintf(fi, '\n\n\n\n');
 fprintf(fi, 'T\t Dist Front \t Frac ext \t Dx/DT \t cp\n');
 fclose(fi);
 

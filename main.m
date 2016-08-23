@@ -25,7 +25,7 @@ close all;
 global I0 E Beta T0 DT C D alpha tol tau0 Ti r0 d0 A densitat entalpia;
 
 %fitxerBeta='Beta100.txt';
-fitxerBeta='Beta 0167.txt';
+fitxerBeta='Beta0167.txt';
 %savefile_para='Test_Main.txt';
 savefile_para='Trans_d4200_B01667fix.txt';  
 
@@ -36,9 +36,9 @@ D = 17;
 alpha = 0.78;
 Beta = load(fitxerBeta);
 DT = 0.1;
-%I0 = 10^21.7;    %primera I0 calculada en base a 1a aprox
-I0 = 10^21.15;
-E = 206950;
+%I0 = 10^21.7;    
+%I0 = 10^21.15;
+%E = 206950;
 tol = 1E-4;
 Ti= 320;
 r0 = 0;
@@ -46,6 +46,9 @@ d0=4200;
 A=1E12;
 densitat = 1.32E-21;
 entalpia = 34.5;
+
+I0 = 10^28.5;
+E = 250000;
 
 fi=fopen(savefile_para, 'w');
 %Totes les variables per enregistrar es poden descomentar. Per analisi
@@ -65,7 +68,7 @@ fi=fopen(savefile_para, 'w');
 %fprintf(fi, '\n\n\n\n');
 fprintf(fi, ' T \t Volum \t fracció \t Dx/DT\t CpSpecific\t Beta\n');
 fclose(fi);
-%% pte poenr todo ben
+% pte poenr todo ben
 
 
 

@@ -17,15 +17,15 @@ function mainDispersioFront
 
 clear all
 
-global T0 A C tau0 D alpha Beta DT d0 Ti m0 promig sigma tol DP;
+global T0 A C tau0 D alpha Beta DT d0 Ti m0 promig sigma tol DP entalpia;
 
-DP=0.05;
+DP=0.1;
 
-fitxerBeta='Beta 0167.txt';
+fitxerBeta='Beta0167.txt';
 
-savefile_para='aTestDispersio.txt';
+savefile_para='cTestDispersio.txt';
 %savefile_para='Dispersio Gausiana c .txt';
-tol = 0.001;
+tol = 0.01;
 T0 = 234;
 A = 1;
 C = 0.1;
@@ -33,12 +33,14 @@ tau0 = 10^(-19.36);
 D = 17;
 alpha = 0.78;
 Beta = load(fitxerBeta);
+entalpia = 34.5;
 DT = 0.1;
 d0 = 200;
 Ti = 300;
 m0 = 0;
 promig = 278;
 sigma = 10;
+
 
 fi=fopen(savefile_para, 'w');
 % fprintf(fi, 'T0: %4.1f temperatura vidre (kelvin)\n', T0);
