@@ -9,11 +9,11 @@ global d0 T0 DP;
 
 y=0; 
 Tf=1;
-
+auxVel = quad(@dispersiovelfront,T0,T);
 while Tf<500
     
     
-    auxVel = quad(@dispersiovelfront,T0,T);
+    
     dist = auxVel * C(Tf)/Beta(T);
 
     if dist > d0

@@ -31,27 +31,23 @@ r0 = 0;
 
 %picos a 335.86  344.81  369.5  388.55  400
 
+I0 = 10^21.15;
+E = 206950;
+
 %I0 = 10^24;  %Valores sólo bulk aprox
 %E = 220000;
 
 I0 = 10^32.0;   
-E = 275000;
+E = 275000; %parece que este es el "bueno"
 
 I0 = 10^28.5;   
-E = 250000; %parece que este es el "bueno"
-
-I0 = 10^21.15;
-E = 206950;
-
-
-
-
+E = 250000; 
 
 
 
 %aumentar E los separa y desplaza hacia la derecha
 %Disminuir I0 desplaza todo a la derecha
-savefile_para='Test_Ajust smooth I02115.txt'; 
+savefile_para='Test_Ajust smooth prueba.txt'; 
 fi=fopen(savefile_para, 'w');
 fprintf(fi, ' T \t B0.33\t B0.167 \t B100\t B1500 \t B23000\n');
 fclose(fi);

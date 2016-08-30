@@ -37,7 +37,7 @@ while (VolumMostra>Vtransaux)
     Vtrans(i+1,3) = Vtrans(i+1,2)/d0;
     if (i>1)
     Vtrans (i+1,4) = (Vtrans(i+1,3) - Vtrans(i,3))/DT;
-    %Vtrans(i+1,5) = Cpg(T)*(1-Vtrans(i+1,3))+ Cpl(T)*Vtrans(i+1,3) + entalpia*Vtrans(i+1,4);
+    Vtrans(i+1,5) = Cpg(T)*(1-Vtrans(i+1,3))+ Cpl(T)*Vtrans(i+1,3) + entalpia*Vtrans(i+1,4);
     end
     Vtransaux= A*Vtrans(i+1,2);
     
@@ -48,9 +48,23 @@ while (VolumMostra>Vtransaux)
     fprintf('%f\t %f\t  %f\t %f\n', Vtrans(i,1),Vtrans(i,2),Vtrans(i,3),Vtrans(i,4));
 end
 
-Vtrans(i,2)=VolumMostra;
-Vtrans(i,3) = 1;
-Vtrans(i,4)= (Vtrans(i,3)-Vtrans(i-1,3))/DT;
+pasosExtra = 0;
+
+while (pasosExtra<20)
+    T=Ti+i*DT;
+    Vtrans(i,2)= d0;
+    Vtrans(i,1)= T;
+    Vtrans(i,3) = 1;
+    if (i>1)
+    Vtrans(i,4) = (Vtrans(i,3) - Vtrans(i-1,3))/DT;
+    Vtrans(i,5) = Cpg(T)*(1-Vtrans(i,3))+Cpl(T)*Vtrans(i,3)+entalpia *Vtrans(i,4);
+    end
+    
+    fprintf('%f\t %f\t  %f\t  %f\t %f\n', Vtrans(i,1),Vtrans(i,2),Vtrans(i,3),Vtrans(i,4),Vtrans(i,5));
+    i=i+1;
+    pasosExtra = pasosExtra +1;
+end
+
 
 end
 

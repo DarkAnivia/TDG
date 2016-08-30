@@ -27,7 +27,7 @@ global I0 E Beta T0 DT C D alpha tol tau0 Ti r0 d0 A densitat entalpia;
 %fitxerBeta='Beta100.txt';
 fitxerBeta='Beta0167.txt';
 %savefile_para='Test_Main.txt';
-savefile_para='Trans_d4200_B01667fix.txt';  
+savefile_para='Trans_d200_B01667fix.txt';  
 
 T0 = 234;
 C = 0.1;
@@ -42,13 +42,13 @@ DT = 0.1;
 tol = 1E-4;
 Ti= 320;
 r0 = 0;
-d0=4200;
+d0=200;
 A=1E12;
 densitat = 1.32E-21;
 entalpia = 34.5;
 
-I0 = 10^28.5;
-E = 250000;
+I0 = 10^32;
+E = 275000;
 
 fi=fopen(savefile_para, 'w');
 %Totes les variables per enregistrar es poden descomentar. Per analisi

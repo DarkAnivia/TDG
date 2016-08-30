@@ -22,11 +22,11 @@ close all;
 
 global I0 E Beta T0 DT C D alpha tol tau0 Ti r0 entalpia;
 
-%fitxerBeta='Beta100.txt';
-fitxerBeta='Beta25K.txt';
-%fitxerBeta='BetaSmooth100.txt';
+fitxerBeta='Beta0167.txt';
+%fitxerBeta='Beta25K.txt';
+%fitxerBeta='BetaSmooth25000.txt';
 %savefile_para='B01667Bulk.txt';
-savefile_para='BetaSatica2500.txt';  
+savefile_para='Betavariable00167.txt';  
 
 T0 = 234;
 C = 0.1;
@@ -44,6 +44,9 @@ Ti= 320;
 r0 = 0;
 %I0 = 10^11.0;   
 %E = 140000;
+
+I0 = 10^32.0;   
+E = 275000;
 
 fi=fopen(savefile_para, 'w');
 %fprintf(fi, 'Ti: %4.1f\t temperatura incial proces (Kelvin)\n', T0);

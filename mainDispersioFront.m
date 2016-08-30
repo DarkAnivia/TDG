@@ -17,14 +17,15 @@ function mainDispersioFront
 
 clear all
 
-global T0 A C tau0 D alpha Beta DT d0 Ti m0 promig sigma tol DP entalpia;
+global T0 A C tau0 D alpha Beta DT d0 Ti m0 promig sigma tol DP entalpia Amplitud w;
 
 DP=0.1;
 
 fitxerBeta='Beta0167.txt';
 
-savefile_para='cTestDispersio.txt';
-%savefile_para='Dispersio Gausiana c .txt';
+%savefile_para='cTestDispersio.txt';
+savefile_para='DispersioFuncio4200.txt';
+%savefile_para='DispersioGauss4200.txt';
 tol = 0.01;
 T0 = 234;
 A = 1;
@@ -35,11 +36,13 @@ alpha = 0.78;
 Beta = load(fitxerBeta);
 entalpia = 34.5;
 DT = 0.1;
-d0 = 200;
+d0 = 4200;
 Ti = 300;
 m0 = 0;
 promig = 278;
-sigma = 10;
+sigma = 5;
+Amplitud = 5.6072; %Normalització P
+w= 0.2 ; %parametre ajust funcio 2 P
 
 
 fi=fopen(savefile_para, 'w');
